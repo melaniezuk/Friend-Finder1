@@ -199,32 +199,39 @@
       
 <script type="text/javascript">
  
-//do i need a $(document).ready(function() {   ??
 
-                //modal ??
-
-
-
-   $("#submit").on("click", function() {
+   $("#submit").on("click", function(event) {
         event.preventDefault
        
       var userData = {
           name: $("#name").val(),
           photo: $("#photo").val(),
-          scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),]
-      }
+          scores: [$("#q1").val(),
+           $("#q2").val(), 
+           $("#q3").val(), 
+           $("#q4").val(), 
+           $("#q5").val(), 
+           $("#q6").val(), 
+           $("#q7").val(), 
+           $("#q8").val(), 
+           $("#q9").val(), 
+           $("#q10").val(),]
+      };
 
       // AJAX POST THE DATA TO FRIENDS API
-      $.post('/api/friends/', userData)  //if post keyword and route matches up with server
-        .done (function(data) {
+      $.post('/api/friend/', userData , function(data)  //if post keyword and route matches up with server
+         {
+            //(attribute of the image is source-)
+
             console.log("modal1", data);
                 //"console.log("modal1", data);//
 
             // Set the name and image values of friend match
-      			$('#userMatch').html(data.matchName);
-		    	$("#userMatchImage").attr("src", data.matchImage);
+      			$('#userMatch').text(data.matchName);
+		    	$("#userMatchPic").attr("src", data.matchImage);
 		    	// Pop open the modal dialog
-      			//$('#modal1').modal('open');    
+                  $('#modal1').modal('show'); 
+                     
      })
    });
 

@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 // PARSE INFO/TEXT
 app.use(bodyParser.text());
+app.use(express.static("app/public"));
  
 //INCLUDE (requiring) HTML ROUTES ON SERVER FILE AND THE (APP) THAT WE ARE PASSING IN TO THAT SPECIFIC FUNCTION WE WANT TO USE EXPRESS
 require('./app/routing/htmlRoutes.js')(app);
